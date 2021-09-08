@@ -1,5 +1,5 @@
 ---
-layout: layouts.post
+layout: post
 title: NLP Benchmarking popular Vietnamese tokenzier
 ---
 
