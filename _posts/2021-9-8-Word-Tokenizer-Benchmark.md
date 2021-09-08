@@ -17,14 +17,14 @@ sentences = parse(text)
 text = ''
 sents = []
 for tokenlist in sentences:
-    tagged = []
-    sent = tokenlist.metadata['text']
-    for item in tokenlist:
-        #print(item['form'],item['xpos'])
-        tagged.append([item['form'],item['xpos'],' '])
-    text += sent + ' '
-    groundtruth.append(tagged)
-    sents.append(sent)
+	tagged = []
+	sent = tokenlist.metadata['text']
+	for item in tokenlist:
+		#print(item['form'],item['xpos'])
+		tagged.append([item['form'],item['xpos'],' '])
+	text += sent + ' '
+	groundtruth.append(tagged)
+	sents.append(sent)
     
 print(groundtruth)
 ```
@@ -70,8 +70,8 @@ class Underthesea_tokenize:
     def __init__(self):
         pass
     def tokenize(self,text):
-            output = []
-            ners = ner(text)
+			output = []
+			ners = ner(text)
             for item in ners:
                 output.append([item[0],item[1],item[3]])
 
