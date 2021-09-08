@@ -16,7 +16,7 @@
   </head>
 
   <body>
-    <div class="wrapper">
+    <div class="wrap">
       <div class="container">
         <header class="masthead clearfix">
           <a href="{{ site.baseurl }}/" class="site-avatar"><img src="{{ site.avatar }}" /></a>
@@ -34,7 +34,9 @@
     </div>
 
     <div id="main" role="main" class="container">
-      {{ content }}
+      <div class="wrap">                                                
+        {{ content }}
+      </div>                       
     </div>
 
     <div class="wrapper-footer">
