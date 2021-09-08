@@ -146,8 +146,9 @@ for t in (Spacy_tokenize,Underthesea_tokenize,VncoreNLP_tokenize):
 
 
 	t.close()
-	```
+```
 And there we have our desired metrics :
+
 ```
 PyVi
 Tagging time: 18.30862819995673 Accuracy: Word segmentation 0.5787813685605887 Pos tag 0.6820176441011108 Entity recognition 0.0
@@ -158,6 +159,7 @@ Tagging time: 38.3007470000739 Accuracy: Word segmentation 0.8004068199478904 P
 VnCoreNLP
 Tagging time: 67.42396240014205 Accuracy: Word segmentation 0.7836769209672259 Pos tag 0.6328564245554692 Entity recognition 0.0
 ```
+
 We have tagging time along with accuracy for word segmentaion, pos tag and entity recognition (though entity missing from dataset so it always 0). 
 
 Pyvi is the fastest of the lot, 2 times faster than the second fastest. This is the result of optimized SpaCy library. However, the trained model of PyVi lose out on segmentation accuracy, only managed 57.8%. Underthesea achived highest accuracy on segmentation at 80%, but lose out on pos tagging to both PyVi and VnCoreNLP. The java tool VnCoreNLP is the slowest of the lot due to it's java wrapper. I conclude that the best way to extract most correct token is mix match of using Underthesea for word segmentation, and PyVi for Pos tagging. 
