@@ -7,7 +7,7 @@ layout: default
   {% for post in site.posts %}
     
       <li>
-        <p class="meta"> {{ page.date | date: "%B %e, %Y" }}</p>
+        <p class="meta"> {{ post.date | date: "%B %e, %Y" }}</p>
         <h1><a class="post-link" href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h1>
           {{ post.excerpt }}
       </li>
