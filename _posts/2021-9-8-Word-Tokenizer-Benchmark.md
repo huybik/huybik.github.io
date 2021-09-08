@@ -9,13 +9,14 @@ I started this when I tried to build a chatbot in Vietnamese for a property comp
 To confirm that, and to see how fast they can segment words, here we going to benchmark 3 popular Vietnamese NLP tool. I use Vietnamese Tree bank data from  https://github.com/UniversalDependencies/UD_Vietnamese-VTB. This data contain more than tagged 800 sentences. These includes word segmentation, pos tag ... but one notable missing is entity tag. The data-set is compatible with Universal Dependency V2, which you can use pre-built tools for processing. For my purpose, I use simple UD python parser from  https://pypi.org/project/conllu/, which helps me parse text data-set into tokens. 
 
 ```python
-f = open ('UD_Vietnamese-VTB-master/vi_vtb-ud-full.conllu', 'r', encoding='utf-8')
-text = f.read()
-f.close()
-groundtruth = []
+with open ('UD_Vietnamese-VTB-master/vi_vtb-ud-full.conllu', 'r', encoding='utf-8') as f:
+	text = f.read()
+
 sentences = parse(text)
+
 text = ''
 sents = []
+groundtruth = []
 for tokenlist in sentences:
 	tagged = []
 	sent = tokenlist.metadata['text']
@@ -26,9 +27,12 @@ for tokenlist in sentences:
 	groundtruth.append(tagged)
 	sents.append(sent)
 	
-print(groundtruth)
+print(groundtruth[0])
 ```
-
+```
+Hay một người lính hải quân Pháp đã rải truyền đơn cho người dân nước Pháp cùng chống lại cuộc chiến phi nghĩa của quân đội Pháp tại VN.
+[['Hay', 'C', ' '], ['một', 'M', ' '], ['người', 'Nc', ' '], ['lính', 'N', ' '], ['hải quân', 'N', ' '], ['Pháp', 'Np', ' '], ['đã', 'R', ' '], ['rải', 'V', ' '], ['truyền đơn', 'N', ' '], ['cho', 'E', ' '], ['người', 'Nc', ' '], ['dân', 'N', ' '], ['nước', 'N', ' '], ['Pháp', 'Np', ' '], ['cùng', 'A', ' '], ['chống', 'V', ' '], ['lại', 'R', ' '], ['cuộc chiến', 'N', ' '], ['phi nghĩa', 'A', ' '], ['của', 'E', ' '], ['quân đội', 'N', ' '], ['Pháp', 'Np', ' '], ['tại', 'E', ' '], ['VN', 'Ny', ' '], ['.', '.', ' ']]
+```
 Now all I need is to make simple classes for each of the Tokenizer for Vietnamese I want to benchmark, and they need to have python support. Throughout my research, there are just a few notable works out there for Vietnamese language and all of them support python which is understandable since Python is the most common language for Datascience. These are Underthesea NLP toolkits for python https://github.com/undertheseanlp/underthesea,  VNCoreNLP by Dat Quoc Nguyen implemented in Java with python wrapper https://github.com/vncorenlp/VnCoreNLP, and Vi_SpaCy model that compatible with SpaCy NLP tool  https://github.com/trungtv/vi_spacy. Note that the data-set we use for our benchmark is not being used to train any of the 3 tokenizer tool.
 
 ### First we will start with Vi_Spacy. 
@@ -41,7 +45,7 @@ class Spacy_tokenize:
 		import spacy
 		self.nlp = spacy.load('vi_spacy_model')
 
-		def tokenize(self,text):
+	def tokenize(self,text):
 		output = []
 		doc = self.nlp(text)
 
@@ -61,15 +65,15 @@ Under the sea is written purely python. It good at what it does (tokenize, ner t
 
 class Underthesea_tokenize:
 	from underthesea import word_tokenize
-		from underthesea import ner
+	from underthesea import ner
 	
 	def __init__(self):
 		pass
 	def tokenize(self,text):
-			output = []
-			ners = ner(text)
-	    for item in ners:
-		output.append([item[0],item[1],item[3]])
+		output = []
+		ners = ner(text)
+		for item in ners:
+			output.append([item[0],item[1],item[3]])
 
 	    return output
 
@@ -122,7 +126,7 @@ for t in (Spacy_tokenize,Underthesea_tokenize,VncoreNLP_tokenize):
 	time += timer() - start
 	count += len(groundtruth[index])
 
-	#print('Predict: ',predict,'Ground-truth: ', groundtruth[index])
+	# 'Predict: ',predict,'Ground-truth: ', groundtruth[index]
 	if len(predict) == len(groundtruth[index]):
 	    for item,gt in zip(predict,groundtruth[index]):  # item = [word, pos, entity]
 
