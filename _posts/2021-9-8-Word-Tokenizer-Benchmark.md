@@ -83,7 +83,7 @@ class Underthesea_tokenize:
 ```
 ### VnCoreNLP
 VnCoreNLP is written in Java, it requires running separate Java server, and it calls wrapper inside python.
-```pyhon
+```python
 class VncoreNLP_tokenize:
     
 	from vncorenlp import VnCoreNLP
