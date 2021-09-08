@@ -3,7 +3,8 @@
   <head>
     <meta charset="utf-8">
     <title>{{ page.title }}</title>
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/main.css" />
+    <link rel="alternate" type="application/rss+xml" title="{{ site.name }} - {{ site.description }}" href="{{ site.baseurl }}/feed.xml" />
   </head>
   <body>
     <nav>
@@ -17,5 +18,6 @@
     <footer>
       &copy; to me
     </footer>
+    {% include analytics.html %}
   </body>
 </html>
