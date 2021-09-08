@@ -1,18 +1,19 @@
 ---
 layout: default
 ---
+<div class="page-content">
+  <div class="posts">
+    <ul class="post">
+    {% for post in site.posts %}
 
-<div class="posts">
-  <ul class="post">
-  {% for post in site.posts %}
-    
-      <li>
-        <span class="post-date"> {{ post.date | date: "%B %e, %Y" }}</span>
-        <h1><a class="post-link" href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h1>
-          {{ post.excerpt }}
-      </li>
-    
-  {% endfor %}
-  </ul>
-  
+        <li>
+          <span class="post-date"> {{ post.date | date: "%B %e, %Y" }}</span>
+          <h1><a class="post-link" href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h1>
+            {{ post.excerpt }}
+        </li>
+
+    {% endfor %}
+    </ul>
+
+  </div>
 </div>
