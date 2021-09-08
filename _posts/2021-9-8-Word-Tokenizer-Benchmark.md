@@ -9,6 +9,8 @@ I started this when I tried to build a chatbot in Vietnamese for a property comp
 To confirm that, and to see how fast they can segment words, here we going to benchmark 3 popular Vietnamese NLP tool. I use Vietnamese Tree bank data from  https://github.com/UniversalDependencies/UD_Vietnamese-VTB. This data contain more than tagged 800 sentences. These includes word segmentation, pos tag ... but one notable missing is entity tag. The data-set is compatible with Universal Dependency V2, which you can use pre-built tools for processing. For my purpose, I use simple UD python parser from  https://pypi.org/project/conllu/, which helps me parse text data-set into tokens. 
 
 ```python
+from conllu import parse
+
 with open ('UD_Vietnamese-VTB-master/vi_vtb-ud-full.conllu', 'r', encoding='utf-8') as f:
 	text = f.read()
 
