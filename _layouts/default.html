@@ -16,9 +16,9 @@
   </head>
 
   <body>
-    <div class="wrap">
-      <div class="container">
-        <header class="masthead clearfix">
+    
+        <header class="site-header">
+          <div class="wrap">
           <a href="{{ site.baseurl }}/" class="site-avatar"><img src="{{ site.avatar }}" /></a>
 
           <div class="site-title" href="{{ site.baseurl }}/">
@@ -29,14 +29,13 @@
             <a class="page-link" href="{{ site.baseurl }}/">Home</a>
             <a class="page-link" href="{{ site.baseurl }}/about">About</a>
           </nav>
-        </header>
+        
       </div>
+           </header>                                                     
     </div>
 
-    <div id="main" role="main" class="container">
-      <div class="wrap">                                                
+    <div id="main" role="main" class="wrap">
         {{ content }}
-      </div>                       
     </div>
 
     <div class="wrapper-footer">
