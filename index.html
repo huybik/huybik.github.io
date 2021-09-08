@@ -9,9 +9,10 @@ layout: default
       <li>
         <span class="post-date">{{ page.date | date: "%B %e, %Y" }}</span>
         <h1><a class="post-link" href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h1>
-        <br>
           {{ post.excerpt }}
       </li>
-    </ul>
+    
   {% endfor %}
+  </ul>
+  
 </div>
