@@ -12,5 +12,13 @@ description: Huy Bik's blog
 # URL of your avatar or profile pic (you could use your GitHub profile pic)
 avatar: https://avatars.githubusercontent.com/u/5626203?v=4
 
+defaults:
+  -
+    scope:
+      path: "" # an empty string here means all files in the project
+      type: "posts" # previously `post` in Jekyll 2.2.
+    values:
+      layout: "post"
+      
 #permalink: /:title/
 theme: jekyll-theme-cayman
