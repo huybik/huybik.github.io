@@ -60,9 +60,9 @@ Under the sea is written purely python. It good at what it does (tokenize, ner t
 ```python
 
 class Underthesea_tokenize:
-    from underthesea import word_tokenize
-    from underthesea import ner
-
+	from underthesea import word_tokenize
+		from underthesea import ner
+	
 	def __init__(self):
 		pass
 	def tokenize(self,text):
