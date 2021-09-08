@@ -13,4 +13,4 @@ description: Huy Bik's blog
 # URL of your avatar or profile pic (you could use your GitHub profile pic)
 avatar: https://avatars.githubusercontent.com/u/5626203?v=4
 
-permalink: /:title/
+#permalink: /:title/
