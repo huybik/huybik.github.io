@@ -25,7 +25,7 @@ for tokenlist in sentences:
 	text += sent + ' '
 	groundtruth.append(tagged)
 	sents.append(sent)
-    
+	
 print(groundtruth)
 ```
 
@@ -38,26 +38,26 @@ Vi_Spacy inherit spacy structure, if you already familiar with spacy it's easy t
 class Spacy_tokenize:
     
     
-    def __init__(self):
-        import spacy
-        self.nlp = spacy.load('vi_spacy_model')
+	def __init__(self):
+	import spacy
+	self.nlp = spacy.load('vi_spacy_model')
 
-    def tokenize(self,text):
-        output = []
-        doc = self.nlp(text)
+	def tokenize(self,text):
+	output = []
+	doc = self.nlp(text)
 
-        for token in doc:
-            output.append([token.text,token.tag_,''])
-            #print(token.text, token.lemma_, token.tag_, token.pos_, token.dep_,
-            #        token.shape_, token.is_alpha, token.is_stop)
+	for token in doc:
+	    output.append([token.text,token.tag_,''])
+	    #print(token.text, token.lemma_, token.tag_, token.pos_, token.dep_,
+	    #        token.shape_, token.is_alpha, token.is_stop)
 
-        return output
-    
-    def close(self):
-        pass
-    
-    def info(self):
-        return('PyVi')
+	return output
+
+	def close(self):
+	pass
+
+	def info(self):
+	return('PyVi')
 ```
 ### Under the sea
 Under the sea is written purely python. It good at what it does (tokenize, ner tagging...) and it have many uses. But for word segmentation, run-time is usually long.
@@ -67,42 +67,42 @@ class Underthesea_tokenize:
     from underthesea import word_tokenize
     from underthesea import ner
     
-    def __init__(self):
-        pass
-    def tokenize(self,text):
+	def __init__(self):
+	pass
+	def tokenize(self,text):
 			output = []
 			ners = ner(text)
-            for item in ners:
-                output.append([item[0],item[1],item[3]])
+	    for item in ners:
+		output.append([item[0],item[1],item[3]])
 
-            return output
-    def close(self):
-        pass
-    def info(self):
-        return('Underthesea')
+	    return output
+	def close(self):
+	pass
+	def info(self):
+	return('Underthesea')
 ```
 ### VnCoreNLP
 VnCoreNLP is written in Java, it requires running separate Java server, and it calls wrapper inside python.
 ```pyhon
 class VncoreNLP_tokenize:
     
-    from vncorenlp import VnCoreNLP
+	from vncorenlp import VnCoreNLP
 
-    # To perform word segmentation, POS tagging, NER and then dependency parsing
-    # annotator = VnCoreNLP("VnCoreNLP-1.1.1.jar", annotators="wseg,pos,ner,parse", max_heap_size='-Xmx2g')
-    def __init__(self):
-        self.annotator = VnCoreNLP("VnCoreNLP-1.1.1.jar", annotators="wseg,pos,ner,parse", max_heap_size='-Xmx2g')
-    def tokenize(self,text):
-        output = []
-        annotated_text = self.annotator.annotate(text)
-        for sent in annotated_text['sentences']:
-            for item in sent:
-                output.append([item['form'].replace('_',' '),item['posTag'],item['nerLabel']])
-        return output
-    def close(self):
-        self.annotator.close()
-    def info(self):
-        return('VnCoreNLP')
+	# To perform word segmentation, POS tagging, NER and then dependency parsing
+	# annotator = VnCoreNLP("VnCoreNLP-1.1.1.jar", annotators="wseg,pos,ner,parse", max_heap_size='-Xmx2g')
+	def __init__(self):
+		self.annotator = VnCoreNLP("VnCoreNLP-1.1.1.jar", annotators="wseg,pos,ner,parse", max_heap_size='-Xmx2g')
+		def tokenize(self,text):
+		output = []
+		annotated_text = self.annotator.annotate(text)
+		for sent in annotated_text['sentences']:
+		    for item in sent:
+			output.append([item['form'].replace('_',' '),item['posTag'],item['nerLabel']])
+		return output
+	def close(self):
+		self.annotator.close()
+	def info(self):
+		return('VnCoreNLP')
 ```
 ### Benchmarking 
 Those classes above produce tokenized output, which we will feed to to our final function that compares the output and ground-truth extracted from data-set.  We loop through each sentence, use our function tokenize to extract tokens, then compare with ground-truth tokens that sentence. We sum up number of  correct word segment, pos tag and entity tag, then divide by total number of tokens to get final accuracy result. 
@@ -110,48 +110,48 @@ Those classes above produce tokenized output, which we will feed to to our final
 ```python
 # Format for data [sentence, [[word, entity], [word, entity],...]]
 for t in (Spacy_tokenize,Underthesea_tokenize,VncoreNLP_tokenize):
-    t = t()
-    count = 0
-    wordcount = 0
-    poscount = 0
-    sercount = 0
-    
-    
-    time = 0
-    index = 0
-    
-    for sent in sents:
-        
-        start = timer()
-        predict = t.tokenize(sent)
-        time += timer() - start
-        count += len(groundtruth[index])
-        
-        #print('Predict: ',predict,'Ground-truth: ', groundtruth[index])
-        if len(predict) == len(groundtruth[index]):
-            for item,gt in zip(predict,groundtruth[index]):  # item = [word, pos, entity]
-                
-                #print(item,gt)
-                if item[0] == gt[0]:
-                    wordcount += 1
-                if item[1] == gt[1]:
-                    poscount += 1
-                if item[2] == gt[2]:
-                    sercount += 1
-        index += 1
-    
-    # Corrected segmented word and entity / total word count
-    wordsegacc = wordcount/count
-    posacc = poscount/count
-    seracc = sercount/count
-    
-    print()
-    print(t.info())
-    print('Tagging time: ',time,' Accuracy: Word segmentation ',wordsegacc,' Pos tag ',posacc,' Entity recognition ',seracc)
-    
-        
-    t.close()
-   ```
+	t = t()
+	count = 0
+	wordcount = 0
+	poscount = 0
+	sercount = 0
+
+
+	time = 0
+	index = 0
+
+	for sent in sents:
+
+	start = timer()
+	predict = t.tokenize(sent)
+	time += timer() - start
+	count += len(groundtruth[index])
+
+	#print('Predict: ',predict,'Ground-truth: ', groundtruth[index])
+	if len(predict) == len(groundtruth[index]):
+	    for item,gt in zip(predict,groundtruth[index]):  # item = [word, pos, entity]
+
+		#print(item,gt)
+		if item[0] == gt[0]:
+		    wordcount += 1
+		if item[1] == gt[1]:
+		    poscount += 1
+		if item[2] == gt[2]:
+		    sercount += 1
+	index += 1
+
+	# Corrected segmented word and entity / total word count
+	wordsegacc = wordcount/count
+	posacc = poscount/count
+	seracc = sercount/count
+
+	print()
+	print(t.info())
+	print('Tagging time: ',time,' Accuracy: Word segmentation ',wordsegacc,' Pos tag ',posacc,' Entity recognition ',seracc)
+
+
+	t.close()
+	```
 And there we have our desired metrics :
 ```
 PyVi
