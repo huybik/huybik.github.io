@@ -3,7 +3,7 @@ layout: post
 title: Short update on benchmarking popular Vietnamese NLP tools 
 ---
 
-This is a follow up post to my previous review. Due to new versions of these tools being out that change speed and accuracy significantly. We still use UD_Vietnamese-VTB dataset for this benchmark which comes with it's limitations, so take the accuracy results with a grain of salt. 
+This is a follow up post to my previous review. Due to new versions of these tools being out that can potentially change speed and accuracy significantly. We will still use UD_Vietnamese-VTB dataset for this benchmark which comes with it's limitations, so take the accuracy results with a grain of salt. 
 
 For this benchmark we use these configurations below. The code for the benchmark can be found at [Tokenizers-benchmark](https://github.com/huybik/Tokenizers-benchmark)
 
