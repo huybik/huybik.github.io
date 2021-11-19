@@ -47,7 +47,11 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-
+img {
+	max-width:500px;
+	width:100%;
+	
+}
 
 /* Base */
 /* ----------------------------------------------------------*/
