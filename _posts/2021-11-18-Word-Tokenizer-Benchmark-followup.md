@@ -23,21 +23,21 @@ Vncorenlp==1.0.3
 Java
 ```
 <p align="center">
-<img src='https://github.com/huybik/Tokenizers-benchmark/blob/16f303cbe68142a4f7eaabeb4de2edda7bbd8b65/images/runtime.png?raw=true' width=100%>
+<img src='https://github.com/huybik/Tokenizers-benchmark/blob/16f303cbe68142a4f7eaabeb4de2edda7bbd8b65/images/runtime.png?raw=true'>
 <p align = "center"> Annotate speed </p>
 </p>
 
 Word annotation is a multi-step pipeline, it starts with word segmentation then doing POS Tagging (Parts of Speech Tagging), NER (Name Entity Recognition) and more. Unfortunately, our dataset doesn't have groundtruth for NER, but we still do NER processing mainly to compare annotation speed.
 
 <p align="center">
-<img src='https://github.com/huybik/Tokenizers-benchmark/blob/16f303cbe68142a4f7eaabeb4de2edda7bbd8b65/images/tokenize.png?raw=true' width=100%>
+<img src='https://github.com/huybik/Tokenizers-benchmark/blob/16f303cbe68142a4f7eaabeb4de2edda7bbd8b65/images/tokenize.png?raw=true'>
 <p align = "center"> Tokenize speed </p>
 </p>
 
 If we do word segmentation alone, the improvement between version 1.3.3 and 1.3.4 is huge at 1.5 times the speed, very impressive for a pure python implementation. Noted ViSpacy result is missing as they don't have separate function for word segmentation. Speed alone doesn't make a good tokenizer, but it makes processing milions of words a lot less painful. For accuracy comparision, while it heavily depends on the dataset in use, it does paint an overal picture on quality of a tokenizer.  
 
 <p align="center">
-<img src='https://github.com/huybik/Tokenizers-benchmark/blob/16f303cbe68142a4f7eaabeb4de2edda7bbd8b65/images/accuracy.png?raw=true' width=100%>
+<img src='https://github.com/huybik/Tokenizers-benchmark/blob/16f303cbe68142a4f7eaabeb4de2edda7bbd8b65/images/accuracy.png?raw=true'>
 <p align = "center"> Word segmentation and POS tag accuracy </p>
 </p>
 
