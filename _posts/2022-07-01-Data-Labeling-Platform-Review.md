@@ -30,8 +30,6 @@ Video is made up by combining multiple images. A simple thought will lead us to 
 <video src='https://user-images.githubusercontent.com/5626203/176987678-ecdcbb44-9d5c-45dc-abaa-0576f25fbda7.mp4' width=180/>
 
 
-
-
 #### Project Management
 
 When doing labeling, the engineers prefer to do crowd sourcing for resource saving. It turns out management and ease of use becoming more and more an important for high quality label result. blueeye.ai offer good coverage on collaboration flow to get the process go smoothly. Tools like assignee, time tracking, bug tracking and most importantly, it's online based nature makes scaling the team becomes trivial task: many people can join and collaborate on the same project instantly.
