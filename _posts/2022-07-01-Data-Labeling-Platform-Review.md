@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Blueeye.com Review: Data Labeling on online Data Platform
+title: Blueeye.com Review Data Labeling on online Data Platform
 ---
 <p align="center">
 <img class="figure" src='https://github.com/huybik/huybik.github.io/blob/main/_posts/blueeye%20data%20platform%20review/image%20label.png?raw=true'>
