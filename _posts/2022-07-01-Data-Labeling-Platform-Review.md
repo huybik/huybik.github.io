@@ -17,13 +17,13 @@ Blueeye.ai targets computer vision projects which requires vast amount of label 
 
 Image project is setup nice and clear, with team management features like Issues and Project Members. Labeling is mostly painless, with you being offered all the popular shape to mark your target like bounding box, landmark point, polygonal segmentation, polyline, cuboid, etc. The most interesting tool is AI assisted features, which detects all objects in the image and offer initial bounding boxes. The default model being used is YOLO V4, which gives pretty good accuracy and speed. 
 <p align="center">
-<img class="figure" src='https://github.com/huybik/huybik.github.io/blob/c7708aa53c26bc108a97cbb40d5ffc03ac3a0e42/_posts/blueeye%20data%20platform%20review/image%20labeling.png'>
+<img class="figure" src='https://github.com/huybik/huybik.github.io/blob/c7708aa53c26bc108a97cbb40d5ffc03ac3a0e42/_posts/blueeye%20data%20platform%20review/image%20labeling.png?raw=true'>
 <p align = "center"> Annotate speed </p>
 </p>
 
 Modern AI models usually require more refined label like 3d shape and segmentation mask than a simple bounding box, so segmentation is being offered as first class citizen in blueeye.ai, with automated AI assist. I like the way I can drag bounding box and the car is segmented out. The result is not perfect, still it does help reduce a significant amount of time. Brush and eraser is provided to refine the segment. I do prefer to have adjustable joins for a more accurate control.
 <p align="center">
-<img class="figure" src='https://github.com/huybik/huybik.github.io/blob/c7708aa53c26bc108a97cbb40d5ffc03ac3a0e42/_posts/blueeye%20data%20platform%20review/object%20detection.png'>
+<img class="figure" src='https://github.com/huybik/huybik.github.io/blob/c7708aa53c26bc108a97cbb40d5ffc03ac3a0e42/_posts/blueeye%20data%20platform%20review/object%20detection.png?raw=true'>
 <p align = "center"> Annotate speed </p>
 </p>
 
@@ -39,7 +39,7 @@ https://user-images.githubusercontent.com/5626203/176987678-ecdcbb44-9d5c-45dc-a
 
 When doing labeling, the engineers prefer to do crowd sourcing for resource saving. It turns out management and ease of use becoming more and more an important for high quality label result. blueeye.ai offer good coverage on collaboration flow to get the process go smoothly. Tools like assignee, time tracking, bug tracking and most importantly, it's online based nature makes scaling the team becomes trivial task: many people can join and collaborate on the same project instantly.
 <p align="center">
-<img class="figure" src='https://github.com/huybik/huybik.github.io/blob/c7708aa53c26bc108a97cbb40d5ffc03ac3a0e42/_posts/blueeye%20data%20platform%20review/project%20management.png'>
+<img class="figure" src='https://github.com/huybik/huybik.github.io/blob/c7708aa53c26bc108a97cbb40d5ffc03ac3a0e42/_posts/blueeye%20data%20platform%20review/project%20management.png?raw=true'>
 <p align = "center"> Annotate speed </p>
 </p>
 
