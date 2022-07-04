@@ -27,7 +27,7 @@ Modern AI models usually require more refined label like 3d shape and segmentati
 #### Video Project
 Video is made up by combining multiple images. A simple thought will lead us to believe if we can label multiple image, then the video problem is done. That's is technically correct, but efficiency will be terrible. So the tracking tool is provide to track what has been labeled for multiple frames, by using AI object tracking. Other than that, there are bounding box, cuboid, polygonal ... to label object in a frame. Transcription in the form of subtitle helps labeler get more detail from the scene if needed. 
 
-<iframe src="[https://www.youtube.com/embed/y881t8ilMyc](https://user-images.githubusercontent.com/5626203/176987678-ecdcbb44-9d5c-45dc-abaa-0576f25fbda7.mp4?raw=true)" frameborder="0" allowfullscreen></iframe>
+<iframe src="https://www.youtube.com/embed/y881t8ilMyc](https://user-images.githubusercontent.com/5626203/176987678-ecdcbb44-9d5c-45dc-abaa-0576f25fbda7.mp4?raw=true" frameborder="0" allowfullscreen></iframe>
 
 
 
